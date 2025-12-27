@@ -114,3 +114,6 @@ cargo install sd curlie dust delta eza
 sudo apt autoremove --purge -y
 sudo apt clean
 sudo rm -rf /var/cache/apt/*
+
+
+tldr pandoc ffmpeg
