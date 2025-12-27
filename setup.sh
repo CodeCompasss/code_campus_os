@@ -17,3 +17,9 @@ bash "custom root/launch.sh"
 sudo gtk-update-icon-cache /usr/share/icons/hicolor
 # Or for GNOME-based DEs 
 sudo update-desktop-database
+
+sudo apt autoremove --purge -y
+sudo apt clean           # removes downloaded .deb packages
+sudo rm -rf /var/lib/apt/lists/*  # removes apt package lists
+
+rm -rf ~/.cache/*
