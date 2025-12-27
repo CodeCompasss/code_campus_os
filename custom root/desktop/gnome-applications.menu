@@ -465,6 +465,15 @@
       <Filename>codecompass.desktop</Filename>
     </Include>
   </Menu>
+  
+  <Menu>
+    <Name>Interview</Name>
+    <Directory>interview.directory</Directory>
+    <Include>
+      <Category>X-Interview</Category>
+    </Include>
+  </Menu>
+  
 
    <Layout>
      <Merge type="menus" />

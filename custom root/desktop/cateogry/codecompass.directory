@@ -1,7 +1,8 @@
 [Desktop Entry]
-Name=code_compass
-Comment=our github organization
-Icon=applications-games
 Type=Directory
+Name=CodeCompass
+Comment=CodeCompass Tools
+Icon=folder
+Encoding=UTF-8
 
 
