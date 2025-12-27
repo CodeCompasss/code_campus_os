@@ -1,0 +1,10 @@
+
+[Desktop Entry]
+Name=Rayyan Coding School
+Comment=Learn coding with structured lessons
+Exec=xdg-open https://rayyan-coding-school.pages.dev/
+Icon=$HOME/.local/share/omakub/applications/icons/codecompass .png
+Terminal=false
+Type=Application
+Categories=Education;
+StartupNotify=true
