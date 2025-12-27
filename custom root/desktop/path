@@ -1,0 +1,9 @@
+the gnome-application file 
+/etc/xdg/menus/applications.menu
+the Desktop file 
+/usr/share/applications
+the catoegory file 
+/usr/share/desktop-directories/
+
+/usr/share/icons/hicolor/48X48/apps 
+icons

@@ -1,0 +1,138 @@
+Cubic Learning Diary – Step-by-Step Notes
+1. Install Programming & Productivity Tools
+
+Install programming languages you need.
+
+Install a terminal and terminal helper tools.
+
+Install productivity tools like VS Code.
+
+Use references like Omarchy for guidance.
+
+2. Legal OS Customization
+
+Edit /etc/lsb-release to set OS=release for legal distribution.
+
+3. Customize Boot & Plymouth
+
+Change the Plymouth boot image (Ubuntu default).
+
+Modify background images and spinner in Plymouth themes XML files.
+
+4. Enable File Extensions
+
+Install required libraries for extensions, e.g., glib, gio, and code.
+
+For Arc Menu, edit the GNOME extension folder, then recompile.
+
+5. Desktop Icons
+
+Install custom icons in /usr/share/icons/hicolor/48x48/apps.
+
+Add .desktop files to /etc/skel/Desktop to ensure they appear for new users.
+
+Apply execution permissions:
+
+chmod +x /etc/skel/Desktop/*.desktop
+
+
+Make sure desktop icons are read-only for other users but executable.
+
+6. Terminal Customization
+
+Remove the default Ubuntu terminal.
+
+Install Alacritty and set its .desktop name as "Terminal".
+
+Ensure it auto-reinstalls if removed during upgrades.
+
+7. Snap & Flatpak
+
+Remove Snap and Flatpak to reduce OS size.
+
+Install Firefox via another method to ensure a browser is available.
+
+8. GNOME Extensions
+
+Remove preinstalled window system extensions like monitor light styles.
+
+Remove default app menus and unnecessary GNOME extensions.
+
+9. Custom-root Access
+
+Use terminal to give your user full root access in custom-root.
+
+Ensure you can copy/edit all necessary system files.
+
+10. Zsh, Oh My Zsh, Powerlevel10k, LazyVim
+
+Configure /etc/skel to include:
+
+Zsh
+
+Oh My Zsh
+
+Powerlevel10k
+
+LazyVim
+
+Optionally, set Zsh as default shell for new users:
+
+sed -i 's|^SHELL=.*|SHELL=/usr/bin/zsh|' /etc/default/useradd
+
+11. Grub & Boot Fixes
+
+Upgrade Grub in Cubic’s source-root to fix boot images.
+
+Edit necessary Grub files; do not rely on sudo nvim alone.
+
+Install Grub manually if required from GitHub tar files and update $PATH.
+
+12. Arc Menu Customization
+
+Edit Arc Menu to add your custom menu items.
+
+Remove the default Ubuntu menu entries.
+
+13. Multimedia & Commands
+
+Install missing software:
+
+VLC
+
+bat command
+
+Other essential command-line tools
+
+14. Cubic Environment
+
+After customizing Cubic virtual environment:
+
+Remove --quirk or pslash options to fix boot loading.
+
+remove snap may remove the new installer 
+if the deksotp icon dont open the broswer it mean ther is no broswer
+need all the needed the additonal driver 
+
+sudo gtk-update-icon-cache /usr/share/icons/hicolor/ 
+to fix the icon color issue  fixed 
+
+
+tehe xztenstion auato enalbe file overirde
+
+90_extensions.gschema.override
+[org.gnome.shell]
+enabled-extensions=['add-to-desktop@tommimon.github.com','arcmenu@arcmenu.com','caffeine@patapon.info','clipboard-indicator@tudmotu.com','dash-to-panel@jderose9.github.com','screenshot-window-sizer@gnome-shell-extensions.gcampax.github.com','tiling-assistant@ubuntu.com','Vitals@CoreCoding.com']
+
+glib-compile-schemas /usr/share/glib-2.0/schemas/
+this will fix the exntntion not on problem 
+
+all omkuhub github stufy cheynam 
+also pop os stufy cheynam 
+
+
+
+the custom root file permisison is issue after doing 
+sudo setfacl -R -m u:shadilrayyan:rwx custom-root
+
+if we dont rmeove this and make roort only the code the wifi adatper and other will fail as usal 

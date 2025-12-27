@@ -1,0 +1,17 @@
+document scanner
+calcuator
+system moniter
+groovy console
+
+advanced network
+file roller 
+logs
+remmina desktop client
+transmision
+startup disk creator
+
+terminal 
+
+
+sudo apt remove --purge gnome-terminal -y
+sudo apt-mark hold gnome-terminal

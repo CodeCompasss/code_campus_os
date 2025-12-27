@@ -1,0 +1,3 @@
+sudo chmod 644 /usr/lib/x86_64-linux-gnu/NetworkManager/1.46.0/libnm-device-plugin.so
+sudo chown root:root /usr/lib/x86_64-linux-gnu/NetworkManager/1.46.0/libnm-device-plugin.so
+sudo systemctl restart NetworkManager

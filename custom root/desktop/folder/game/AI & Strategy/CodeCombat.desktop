@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=CodeCombat
+Comment=Learn programming by playing a dungeon coding adventure
+Exec=xdg-open https://codecombat.com/
+Icon=codecompbat
+Terminal=false
+Type=Application
+Categories=Game;AI; 

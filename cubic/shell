@@ -1,0 +1,48 @@
+#!/bin/bash
+set -euo pipefail
+
+# Update and install base packages
+apt update
+apt install -y zsh git curl wget tmux
+
+# Install latest Neovim from GitHub releases
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+rm -rf /opt/nvim
+tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+ln -sf /opt/nvim-linux-x86_64/bin/nvim /usr/bin/nvim
+rm nvim-linux-x86_64.tar.gz
+
+# Install Oh My Zsh unattended for root
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+
+# Clone Powerlevel10k theme for Oh My Zsh
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/.oh-my-zsh/custom/themes/powerlevel10k
+
+# Set Powerlevel10k as default theme in root's .zshrc
+sed -i 's/^ZSH_THEME=.*/ZSH_THEME="powerlevel10k\/powerlevel10k"/' /root/.zshrc
+
+# Create a basic tmux config for root
+cat << 'EOF' > /root/.tmux.conf
+set -g mouse on
+setw -g mode-keys vi
+bind r source-file ~/.tmux.conf \; display-message "Config reloaded!"
+EOF
+
+# Install LazyVim Neovim starter config for root
+mkdir -p /root/.config
+git clone https://github.com/LazyVim/starter /root/.config/nvim
+rm -rf /root/.config/nvim/.git
+
+# Copy configs to /etc/skel for new users
+cp -r /root/.oh-my-zsh /etc/skel/
+cp /root/.zshrc /etc/skel/
+cp /root/.tmux.conf /etc/skel/
+cp -r /root/.config /etc/skel/
+
+# Set zsh as default shell in useradd defaults
+sed -i 's|^SHELL=.*|SHELL=/usr/bin/zsh|' /etc/default/useradd
+
+# Ensure zsh is listed in /etc/shells
+grep -qxF /usr/bin/zsh /etc/shells || echo /usr/bin/zsh >> /etc/shells
+
+echo "Installation and configuration complete. For best display, install a Nerd Font like MesloLGS NF on your terminal emulator."

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Repeto
+Comment=Repeating internship hackathon scholarships research opperuntitye
+Exec=xdg-open https://codecompasss.github.io/repeto/
+Icon=codecompass
+Categories=X-CodeCompass;
+Terminal=false

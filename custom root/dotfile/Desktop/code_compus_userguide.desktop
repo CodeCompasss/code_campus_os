@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=user guide
+icon=codecompass 
+Comment=Open the codecompass user guide
+Exec=xdg-open https://shadil-rayyan.github.io/code_compus_userguide/
+Terminal=false
+Type=Application

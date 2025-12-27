@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=CSE Starter Guide
+Comment=Open the CSE Starter Guide
+Exec=xdg-open https://shadil-rayyan.github.io/cse-student-starter-guide/
+icon=codecompass
+Terminal=false
+Type=Application
+Categories=X-CodeCompass;
+

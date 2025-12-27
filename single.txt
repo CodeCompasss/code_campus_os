@@ -1,0 +1,116 @@
+# Update package list first
+sudo apt update
+
+# Fix the DNS resolver to use Google's DNS (to avoid internet problems during install)
+echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null
+
+# Ensure hostname mapping is present (adjust if your hostname differs)
+echo "127.0.1.1 $(hostname)" | sudo tee -a /etc/hosts
+
+# Carefully remove unwanted default apps - avoid removing essential system or network packages
+sudo apt remove --purge -y gnome-terminal gnome-text-editor vim totem rhythmbox thunderbird aisleriot gnome-mahjongg gnome-mines gnome-sudoku transmission-gtk shotwell simple-scan rhythmbox video-camera remmina gnome-system-monitor gnome-screenshot gnome-contacts gnome-maps gnome-weather gnome-clocks gnome-calendar apg advanced-network-configuration
+
+# Clean up orphaned packages
+sudo apt autoremove -y
+
+# Install essential build tools and dependencies
+sudo apt install -y build-essential wget curl unzip zip ca-certificates software-properties-common
+
+# Add Fastfetch PPA and install Fastfetch
+sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
+sudo apt update
+sudo apt install -y fastfetch
+
+# Install Git and GitHub CLI
+\
+# Install VSCode from Microsoft's repository
+# Add Microsoft GPG key
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /usr/share/keyrings/microsoft.gpg > /dev/null
+echo "deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
+sudo apt update
+sudo apt install -y code
+
+sudo install -d -m 0755 /etc/apt/keyrings && \
+wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null && \
+echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" | sudo tee /etc/apt/sources.list.d/mozilla.list > /dev/null && \
+echo -e 'Package: *\nPin: origin packages.mozilla.org\nPin-Priority: 1000' | sudo tee /etc/apt/preferences.d/mozilla > /dev/null && \
+sudo apt-get update && sudo apt-get install -y firefox
+
+
+# Install C/C++ compilers and debugging tools
+sudo apt install -y gcc g++ gdb clang clangd lldb
+
+# Install Rust using rustup (non-root, runs in user context)
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+# Install Java related tools
+sudo apt install -y openjdk-21-jdk maven gradle
+
+# Install Python related tools
+sudo apt install -y python3-venv python3-pip python3-dev
+
+# Install Flex and Bison
+sudo apt install -y flex bison
+
+# Additional Microsoft lab tools
+sudo apt install -y dosbox nasm spyder
+
+# Install Node.js
+sudo apt install -y nodejs
+
+# Install MySQL with preconfigured root password
+export DEBIAN_FRONTEND=noninteractive
+echo "mysql-server mysql-server/root_password password root" | sudo debconf-set-selections
+echo "mysql-server mysql-server/root_password_again password root" | sudo debconf-set-selections
+sudo apt install -y mysql-server
+
+# Install Ghostty snap
+sudo snap install ghostty
+
+# Install multimedia and GNOME extensions/tools
+sudo apt install -y vlc obs-studio gnome-shell-extension-manager
+
+# Install SSH and file syncing tools
+sudo apt install -y openssh-client openssh-server rsync
+
+# Install Zsh, Oh My Zsh, and Powerlevel10k theme
+sudo apt install -y zsh
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+chsh -s $(which zsh)
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+echo 'ZSH_THEME="powerlevel10k/powerlevel10k"' >> ~/.zshrc
+
+# Install Tmux, fzf, tldr, neofetch, btop, lazygit
+sudo apt install -y tmux fzf tldr neofetch btop lazygit
+
+# Install Docker and Docker Compose
+sudo apt install -y docker.io docker-compose
+
+# Additional useful tools
+sudo apt install -y exa ripgrep bat
+
+# Install Firefox from Mozilla official repo
+sudo install -d -m 0755 /etc/apt/keyrings
+wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
+echo -e "Types: deb\nURIs: https://packages.mozilla.org/apt\nSuites: mozilla\nComponents: main\nSigned-By: /etc/apt/keyrings/packages.mozilla.org.asc" | sudo tee /etc/apt/sources.list.d/mozilla.list > /dev/null
+echo -e "Package: *\nPin: origin packages.mozilla.org\nPin-Priority: 1000" | sudo tee /etc/apt/preferences.d/mozilla > /dev/null
+sudo apt update
+sudo apt install -y firefox
+
+# Install Neovim latest version manually
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+sudo rm -rf /opt/nvim
+sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+rm -rf ~/.config/nvim/.git
+
+sudo apt install -y ripgrep fd-find bat fzf zoxide btop tldr pandoc ffmpeg
+sudo snap install glow
+sudo apt install liferea
+cargo install sd curlie dust delta eza
+
+# Final cleanup
+sudo apt autoremove --purge -y
+sudo apt clean
+sudo rm -rf /var/cache/apt/*

@@ -1,0 +1,21 @@
+# Fix sudo.conf permissions
+chmod 644 /etc/sudo.conf
+
+# Fix sudoers.d ownership
+chown -R root:root /etc/sudoers.d
+
+# Fix hostname resolution
+echo "127.0.0.1   cubic" >> /etc/hosts
+
+
+# Remove the wrong repo files
+sudo rm -f /etc/apt/sources.list.d/vscode.list
+sudo rm -f /etc/apt/sources.list.d/mozilla.list
+
+# Re-add correct Visual Studio Code repository (standard format)
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | \
+  sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
+
+# Re-add Mozilla Team PPA (replace 'noble' if you're using jammy/focal)
+echo "deb [signed-by=/usr/share/keyrings/mozilla.gpg] http://ppa.launchpad.net/mozillateam/ppa/ubuntu noble main" | \
+  sudo tee /etc/apt/sources.list.d/mozilla.list > /dev/null

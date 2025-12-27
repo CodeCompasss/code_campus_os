@@ -1,0 +1,4 @@
+sudo setfacl -R -m u:shadilrayyan:rwx custom-root
+getfacl custom-root
+sudo setfacl -R -x u:shadilrayyan custom-root
+getfacl custom-root

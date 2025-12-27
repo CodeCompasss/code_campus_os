@@ -1,0 +1,135 @@
+#!/bin/bash
+# ======================================
+# 🔧 Universal Dev Tool Checker & Installer
+# ======================================
+
+GREEN="\e[32m"
+RED="\e[31m"
+YELLOW="\e[33m"
+BLUE="\e[34m"
+RESET="\e[0m"
+
+installed=()
+missing=()
+
+check_cmd() {
+    local cmd="$1"
+    local label="${2:-$cmd}"
+    if command -v "$cmd" &>/dev/null; then
+        echo -e "${GREEN}✅ $label is installed${RESET}"
+        installed+=("$label")
+    else
+        echo -e "${RED}❌ $label is missing${RESET}"
+        missing+=("$label")
+    fi
+}
+
+echo -e "${BLUE}🔍 Checking core tools...${RESET}"
+for t in gcc g++ gdb clang lldb; do check_cmd "$t"; done
+
+echo -e "\n${BLUE}🧱 Checking build utilities...${RESET}"
+for t in make flex bison dosbox nasm; do check_cmd "$t"; done
+
+echo -e "\n${BLUE}🌐 Checking languages and runtimes...${RESET}"
+check_cmd python3
+check_cmd pip3
+check_cmd java "Java (JDK)"
+check_cmd mvn "Maven"
+check_cmd gradle
+check_cmd node "Node.js"
+check_cmd npm "npm"
+check_cmd rustc "Rust Compiler"
+check_cmd cargo "Cargo"
+
+echo -e "\n${BLUE}💻 Checking editors and terminals...${RESET}"
+check_cmd alacritty
+check_cmd nvim "Neovim"
+check_cmd vim
+check_cmd code "VSCode"
+check_cmd zsh
+check_cmd tmux
+
+echo -e "\n${BLUE}🧰 Checking system tools...${RESET}"
+check_cmd git
+check_cmd gh "GitHub CLI"
+check_cmd fzf
+check_cmd tldr
+check_cmd ranger
+check_cmd neofetch
+check_cmd btop
+check_cmd lazygit
+check_cmd rg "ripgrep"
+check_cmd exa
+check_cmd bat
+
+echo -e "\n${BLUE}🗄️ Checking databases & containers...${RESET}"
+check_cmd mysql "MySQL"
+check_cmd docker
+check_cmd docker-compose
+
+echo -e "\n${BLUE}🌐 Checking network & SSH tools...${RESET}"
+check_cmd ssh
+check_cmd rsync
+
+echo -e "\n${BLUE}🌟 Checking custom dev configs...${RESET}"
+
+# zsh already checked above, but keeping it for clarity
+check_cmd zsh
+
+# Powerlevel10k theme
+if [ -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
+    echo -e "${GREEN}✅ Powerlevel10k theme installed${RESET}"
+    installed+=("Powerlevel10k")
+else
+    echo -e "${RED}❌ Powerlevel10k theme missing${RESET}"
+    missing+=("Powerlevel10k")
+fi
+
+# LazyVim config
+if [ -d "$HOME/.config/nvim" ] && [ "$(ls -A $HOME/.config/nvim)" ]; then
+    echo -e "${GREEN}✅ LazyVim Neovim config present${RESET}"
+    installed+=("LazyVim")
+else
+    echo -e "${RED}❌ LazyVim Neovim config missing${RESET}"
+    missing+=("LazyVim")
+fi
+
+
+# ==============================
+# ✅ Summary Section
+# ==============================
+echo -e "\n${YELLOW}======================================"
+echo -e "📋 SUMMARY"
+echo -e "======================================${RESET}"
+
+if [ ${#installed[@]} -gt 0 ]; then
+    echo -e "${GREEN}🟩 Installed tools (${#installed[@]}):${RESET}"
+    printf "  %s\n" "${installed[@]}"
+fi
+
+if [ ${#missing[@]} -gt 0 ]; then
+    echo -e "\n${RED}🟥 Missing tools (${#missing[@]}):${RESET}"
+    printf "  %s\n" "${missing[@]}"
+else
+    echo -e "\n${GREEN}🎉 All tools are installed!${RESET}"
+fi
+
+# ==============================
+# ⚙️ Optional Auto Installer
+# ==============================
+if [ ${#missing[@]} -gt 0 ]; then
+    echo -e "\n${YELLOW}⚙️ Would you like to install missing tools now? (y/n)${RESET}"
+    read -r answer
+    if [[ "$answer" =~ ^[Yy]$ ]]; then
+        echo -e "${BLUE}📦 Installing missing tools...${RESET}"
+        sudo apt update -qq
+        for tool in "${missing[@]}"; do
+            sudo apt install -y "$tool" 2>/dev/null || echo -e "${RED}⚠️ Failed to install $tool${RESET}"
+        done
+        echo -e "${GREEN}✅ Installation attempt complete.${RESET}"
+    else
+        echo -e "${YELLOW}🚫 Skipped installation.${RESET}"
+    fi
+fi
+
+echo -e "\n${BLUE}✅ Version check and summary complete.${RESET}"

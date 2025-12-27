@@ -1,0 +1,47 @@
+System Identity and Branding Files
+/etc/lsb-release (edit or replace, contains distribution info)
+
+/etc/os-release (edit, changes distro and version details)
+
+/etc/issue and /etc/issue.net (remove or edit pre-login system messages)
+
+/boot/grub/grub.cfg and /boot/grub/loopback.cfg (edit boot menu branding)
+
+.disk/info (edit, changes live CD identity)
+
+README.diskdefines (edit, changes CD README info)
+
+Visual and Logo Branding
+/usr/share/icons/ubuntu* and /usr/share/icons/hicolor/*/apps/ubuntu* (remove Ubuntu icons)
+
+/usr/share/plymouth/themes/ubuntu-logo (remove Ubuntu boot splash themes)
+
+/usr/share/backgrounds/ubuntu*.jpg or /usr/share/backgrounds/ (replace Ubuntu wallpapers)
+
+/usr/share/images/ (search for branding images)
+
+/usr/share/doc/ubuntu* (remove Ubuntu-specific documentation)
+
+Installer/Live System
+Ubiquity and related installer packages: /usr/share/ubiquity/ (replace installer graphics, strings, logos)
+
+Casper live boot files: /usr/share/casper/ubuntu.png or similar (boot logo)
+
+/usr/lib/os-release (same as /etc/os-release on some setups)
+
+Default User and System Scripts
+Change default live user "ubuntu" in live build scripts or /etc/passwd
+
+Look for system scripts referencing Ubuntu by name (customize scripts for your branding)
+
+URLs, Documentation, and Help
+System-wide references to "ubuntu.com" URLs (/etc/apt/sources.list, /usr/share/doc)
+
+Application help menus or about dialogs referencing "Ubuntu" or Canonical
+
+Any application splash screens or dialogs with branding
+
+Additional Removals
+Remove any leftover packages named ubuntu-* unless needed for functionality
+
+Clean up /etc/apt/sources.list to point only at your own or generic repositories, not archive.ubuntu.com
