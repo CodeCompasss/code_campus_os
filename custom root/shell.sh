@@ -52,11 +52,18 @@ echo "Installing GNOME Shell extensions..."
 mkdir -p /usr/share/gnome-shell/extensions
 cp -r "$SCRIPT_DIR/extension/"* /usr/share/gnome-shell/extensions/
 
-# Remove Ubuntu Dock (if present)
-if [ -d /usr/share/gnome-shell/extensions/ubuntu-dock ]; then
-  echo "Removing Ubuntu Dock extension..."
-  rm -rf /usr/share/gnome-shell/extensions/ubuntu-dock
-fi
+# Remove Ubuntu GNOME extensions if present
+for ext in ubuntu-dock@ubuntu.com ubuntu-appindicators@ubuntu.com; do
+  EXT_PATH="/usr/share/gnome-shell/extensions/$ext"
+
+  if [ -d "$EXT_PATH" ]; then
+    echo "Removing $ext ..."
+    sudo rm -rf "$EXT_PATH"
+  else
+    echo "$ext not found, skipping."
+  fi
+done
+
 
 
 # -------------------------------

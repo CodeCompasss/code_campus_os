@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Pramp
+Comment=Practice coding interviews with peers
+Exec=xdg-open https://www.pramp.com/#/
+Icon=/home/$USER/.local/share/omakub/applications/icons/pramp.png
+Terminal=false
+Type=Application
+Categories=X-Interview;
+StartupNotify=true
+

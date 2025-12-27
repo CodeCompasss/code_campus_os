@@ -136,3 +136,5 @@ the custom root file permisison is issue after doing
 sudo setfacl -R -m u:shadilrayyan:rwx custom-root
 
 if we dont rmeove this and make roort only the code the wifi adatper and other will fail as usal 
+
+understasood doing this stuff locally the folder incorrect hte root permission meaning the when you compiler iso the sudo and other dont have proper permission 
