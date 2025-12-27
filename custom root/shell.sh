@@ -43,7 +43,8 @@ fi
 # -------------------------------
 echo "Installing default user dotfiles..."
 mkdir -p /etc/skel
-cp -r "$SCRIPT_DIR/dotfile/"* /etc/skel/
+cp -r "$SCRIPT_DIR/dotfile/." /etc/skel/
+
 
 # -------------------------------
 # 5. GNOME Shell extensions

@@ -1,9 +1,17 @@
-Right-click on the desktop icon and select Allow Launching.
+if you cannot access the deskotp icons 
+Right-click on the desktop icon and select Allow Launching,
+or run the following commands in the terminal:
 
-Make sure Extension Manager is installed and that all extensions are enabled.
+gio set "$HOME/Desktop/codecompass.desktop" metadata::trusted true
+gio set "$HOME/Desktop/code_compus_userguide.desktop" metadata::trusted true
+gio set "$HOME/Desktop/cse-starter-guide.desktop" metadata::trusted true
+
+
 Also, ensure that the default shell is set to Zsh.
+chsh -s $(which zsh)
+(note this will not wokr on live session )
 
-if you cannot see teh icon in live just do this 
+If you cannot see the icon in a live session, run:
 
 sudo gtk-update-icon-cache /usr/share/icons/hicolor
 # Or for GNOME-based DEs 
