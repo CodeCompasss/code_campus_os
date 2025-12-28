@@ -5,7 +5,7 @@ echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null
 echo "127.0.1.1 $(hostname)" | sudo tee -a /etc/hosts
 
 
-# find "install" -type f -name "*.sh" -exec bash "{}" \;
+find "install" -type f -name "*.sh" -exec bash "{}" \;
 
 bash "custom_root/shell.sh"
 

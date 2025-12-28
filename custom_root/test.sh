@@ -37,9 +37,9 @@ echo "========================================"
 check_file /etc/xdg/menus/gnome-applications.menu
 
 # 2. GNOME applications menu
-check_file  /usr/share/desktop-directories/
+check_dir /usr/share/desktop-directories
 
-# 2. Icons
+# 3. Icons
 check_dir /usr/share/icons/hicolor/48x48/apps
 
 # 3. .desktop files
