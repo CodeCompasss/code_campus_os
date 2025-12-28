@@ -7,11 +7,11 @@ echo "127.0.1.1 $(hostname)" | sudo tee -a /etc/hosts
 
 # find "install" -type f -name "*.sh" -exec bash "{}" \;
 
-bash "custom root/shell.sh"
+bash "custom_root/shell.sh"
 
-bash "custom root/test.sh"
+bash "custom_root/test.sh"
 
-bash "custom root/launch.sh"
+bash "custom_root/launch.sh"
 
 # Update icon cache
 sudo gtk-update-icon-cache /usr/share/icons/hicolor
