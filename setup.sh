@@ -13,6 +13,9 @@ bash "custom_root/test.sh"
 
 bash "custom_root/launch.sh"
 
+bash "custom_root/gnome.sh"
+
+
 # Update icon cache
 sudo gtk-update-icon-cache /usr/share/icons/hicolor
 # Or for GNOME-based DEs 
