@@ -40,7 +40,8 @@ ls -l /usr/share/icons/hicolor/48x48/apps || true
 # -------------------------------
 echo "Installing .desktop launchers..."
 mkdir -p /usr/share/applications
-cp "$SCRIPT_DIR/desktop/folder/"*.desktop /usr/share/applications/ 2>/dev/null || true
+find "$SCRIPT_DIR/desktop/folder" -type f -name "*.desktop" -exec cp {} /usr/share/applications/ \;
+chmod 644 /usr/share/applications/*.desktop || true
 ls -l /usr/share/applications | tail || true
 
 # -------------------------------
