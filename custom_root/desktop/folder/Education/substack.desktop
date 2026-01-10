@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=substack 
+Comment= Newsletter
+Exec=xdg-open https://substack.com/home
+Icon=mitocw
+Terminal=false
+Type=Application
+Categories=Education;
+StartupNotify=true
