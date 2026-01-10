@@ -19,6 +19,19 @@ cp "$SCRIPT_DIR/desktop/gnome-applications.menu" /etc/xdg/menus/
 ls -l /etc/xdg/menus || true
 
 # -------------------------------
+# os-release and lsb-release
+# -------------------------------
+
+echo "Moving os-release and lsb-release"
+
+mkdir -p /etc
+
+cp "$SCRIPT_DIR/release/os-release" /etc/os-release
+cp "$SCRIPT_DIR/release/lsb-release" /etc/lsb-release
+
+
+
+# -------------------------------
 # 2. GNOME desktop category directories
 # -------------------------------
 echo "Installing GNOME desktop category directories..."
