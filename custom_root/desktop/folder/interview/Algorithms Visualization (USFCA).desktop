@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Algorithms Visualization (USFCA)
+Comment=Algorithms Visualization (USFCA)
+Exec=xdg-open https://www.cs.usfca.edu/~galles/visualization/Algorithms.html
+Icon=cs-usfca.png
+Terminal=false
+Type=Application
+Categories=X-Interview;
+StartupNotify=true

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Devshelf
+icon=codecompass 
+Comment=Open the Devshelf
+Exec=xdg-open https://shadil-rayyan.github.io/code_compus_userguide/
+Terminal=false
+Type=Application
+Categories=X-CodeCompass;

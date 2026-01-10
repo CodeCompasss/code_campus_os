@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=AlgoMaster
+Comment=Curated resources for Low Level Design interviews
+Exec=xdg-open https://algomaster.io/
+Icon=algomaster.png
+Terminal=false
+Type=Application
+Categories=X-Interview;
+StartupNotify=true
+

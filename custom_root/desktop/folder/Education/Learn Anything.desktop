@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Learn Anything
+Comment=Learn Anything
+Exec=xdg-open https://learn-anything.xyz/
+Icon=learn-anything.png
+Terminal=false
+Type=Application
+Categories=Education;
+StartupNotify=true

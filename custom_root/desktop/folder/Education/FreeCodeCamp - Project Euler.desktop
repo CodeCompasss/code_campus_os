@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Project Euler
+Comment=FreeCodeCamp - Project Euler
+Exec=xdg-open https://www.freecodecamp.org/learn/project-euler/
+Icon=freecodecamp.png
+Terminal=false
+Type=Application
+Categories=Education
+StartupNotify=true

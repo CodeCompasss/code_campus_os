@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=HyperPolyglot
+Comment=HyperPolyglot
+Exec=xdg-open https://hyperpolyglot.org
+Icon=hyperpolyglot.png
+Terminal=false
+Type=Application
+Categories=Education;
+StartupNotify=true

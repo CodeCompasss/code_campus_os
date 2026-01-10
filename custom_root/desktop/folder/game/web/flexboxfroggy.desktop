@@ -5,5 +5,5 @@ Exec=xdg-open https://flexboxfroggy.com/
 Icon=flexboxfroggy
 Terminal=false
 Type=Application
-Categories=Game;Web;
+Categories=Game;
 StartupNotify=true

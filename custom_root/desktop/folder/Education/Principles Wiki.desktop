@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Principles Wiki
+Comment=Principles Wiki
+Exec=xdg-open https://www.principles-wiki.net/start
+Icon=principles-wiki.png
+Terminal=false
+Type=Application
+Categories=Education;
+StartupNotify=true

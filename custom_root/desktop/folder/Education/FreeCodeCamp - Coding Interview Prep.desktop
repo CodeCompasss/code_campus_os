@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Coding Interview Prep
+Comment=FreeCodeCamp - Coding Interview Prep
+Exec=xdg-open https://www.freecodecamp.org/learn/coding-interview-prep/
+Icon=freecodecamp.png
+Terminal=false
+Type=Application
+Categories=Education;
+StartupNotify=true

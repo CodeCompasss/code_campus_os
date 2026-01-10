@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Flukeout
+Comment=Flukeout
+Exec=xdg-open https://flukeout.github.io/
+Icon=flukeout.png
+Terminal=false
+Type=Application
+Categories=Game;
+StartupNotify=true

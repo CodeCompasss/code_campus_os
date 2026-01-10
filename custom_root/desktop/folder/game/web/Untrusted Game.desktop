@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Untrusted Game
+Comment=Untrusted Game
+Exec=xdg-open https://untrustedgame.com/
+Icon=untrustedgame.png
+Terminal=false
+Type=Application
+Categories=Game;
+StartupNotify=true

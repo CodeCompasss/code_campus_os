@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Refactoring Guru
+Comment=Refactoring Guru
+Exec=xdg-open https://refactoring.guru
+Icon=refactoring-guru.png
+Terminal=false
+Type=Application
+Categories=Education;
+StartupNotify=true

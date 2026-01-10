@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=VisualGo - Arrays
+Comment=VisualGo - Arrays
+Exec=xdg-open https://visualgo.net/en/
+Icon=visualgo.png
+Terminal=false
+Type=Application
+Categories=X-Interview;
+StartupNotify=true
